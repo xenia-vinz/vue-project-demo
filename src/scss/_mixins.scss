@@ -1,0 +1,65 @@
+@mixin breakpoint ($min, $max: 0) {
+  @if ($max > 0) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $min) {
+      @content;
+    }
+  }
+}
+
+@mixin padding-hack ($padding: 100%, $after: true) {
+  @if ($after) {
+    &:after {
+      content: '';
+      display: block;
+      padding-top: $padding;
+    }
+  } @else {
+    &:before {
+      content: '';
+      display: block;
+      padding-top: $padding;
+    }
+  }
+}
+
+@mixin bg ($size: cover, $pos: center) {
+  background-repeat: no-repeat ;
+  background-position: #{$pos};
+  background-size: #{$size};
+}
+
+@mixin placeholder-color ($color) {
+  ::-webkit-input-placeholder {color:$color;}
+  ::-moz-placeholder          {color:$color;}
+  :-moz-placeholder           {color:$color;}
+  :-ms-input-placeholder      {color:$color;}
+}
+
+@mixin btn () {
+  padding: 17px 39px;
+
+  border: 0;
+  background: $c_red;
+  color: $c_sand;
+
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 1px 0 rgba($c_sand_dark, 0.5);
+  }
+  @include breakpoint($tablet) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  @include breakpoint($desktop) {
+    padding: 17px 28px;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "1-GARDARICA": {
+    "guid": "425d5df6483b06e9",
+    "title": "Подарок от языкового образовательного центра \"Северная Гардарика\"",
+    "description": "Cкидка 10 %",
+    "image": "gifts/01.png"
+  },
+  "2-FUNFORMUM": {
+    "guid": "44e1ce4497226330",
+    "title": "Подарок от магазина для мам и их малышей",
+    "description": "Скидка 15 %!",
+    "image": "gifts/02.png"
+  },
+  "4-TALLINK": {
+    "guid": "428e8e583cfeaa10",
+    "title": "Подарок от Tallink Silja Line",
+    "description": "Скидка 20 % на круиз в январе!",
+    "image": "gifts/03.png"
+  },
+  "6-VALIO": {
+    "guid": "43c00c4b8dbdca46",
+    "title": "Подарок от Valio ",
+    "description": "Набор для гурмана и кулинара",
+    "image": "gifts/04.png"
+  }
+}

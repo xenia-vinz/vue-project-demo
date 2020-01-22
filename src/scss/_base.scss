@@ -1,0 +1,194 @@
+// Fonts
+  @import url('https://fonts.googleapis.com/css?family=Exo+2:400,600&display=swap&subset=cyrillic');
+  @font-face {
+    font-family: 'lifehackregular';
+    src: url('./assets/deartype_-_lifehack-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./assets/deartype_-_lifehack-webfont.woff2') format('woff2'),
+         url('./assets/deartype_-_lifehack-webfont.woff') format('woff'),
+         url('./assets/deartype_-_lifehack-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+// Unclassed
+  html {
+    font-size: 14px;
+    font-weight: normal;
+    font-family: $font_exo;
+    padding: 0;
+    margin: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+  }
+
+  body {
+    min-height: 100%;
+    min-width: 320px;
+    background: $c_sand;
+  }
+
+  a {
+    color: $c_red;
+    cursor: pointer;
+  }
+  img, video {
+    max-width: 100%;
+  }
+  ::selection {
+    background: rgba($c_sand_dark, 0.5);
+  }
+
+// Forms
+  input,
+  button {
+    &[disabled] {
+      pointer-events: none;
+      opacity: .9;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 1px 0 rgba($c_sand_dark, 0.5);
+    }
+  }
+    input[type=text] {
+      border: 0;
+      padding: 16px;
+      background: $c_white;
+
+      font-size: 16px;
+      color: $c_black1;
+      @include breakpoint($desktop) {
+        padding: 8px 10px;
+      }
+    }
+    .input-radio {
+      display: block;
+      margin: 0 0 15px;
+      &__input {
+        display: none;
+      }
+      &__label {
+        position: relative;
+        display: block;
+        min-height: 25px;
+        padding: 0 0 0 36px;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 25px;
+          height: 25px;
+          @include bg();
+          background-image: url('./assets/input-radio.svg');
+        }
+        input:checked + & {
+          &:before {
+            background-image: url('./assets/input-radio-checked.svg');
+          }
+        }
+      }
+    }
+    .input-checkbox {
+      display: block;
+      margin: 0 0 15px;
+      &__input {
+        display: none;
+      }
+      &__label {
+        position: relative;
+        display: block;
+        min-height: 14px;
+        padding: 0 0 0 25px;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 14px;
+          height: 14px;
+          @include bg();
+          background-image: url('./assets/input-checkbox.svg');
+        }
+        input:checked + & {
+          &:before {
+            background-image: url('./assets/input-checkbox-checked.svg');
+          }
+        }
+      }
+    }
+
+// Popup
+  .v--modal {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  .popup {
+    z-index: 900;
+    &__inner {
+      position: relative;
+    }
+  }
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      @include bg();
+      background-image: url('./assets/close.svg');
+      font-size: 0;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+// Helpers
+  .preloader {
+    pointer-events: none;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba($c_sand_dark, 0.65);
+      background-image: url('./assets/preloader.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100px;
+      opacity: 0;
+      animation-name: preloader-show;;
+      animation-delay: .5s;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      z-index: 100;
+    }
+  }
+  @keyframes preloader-show {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+// Avoid binded to data styles
+  p {
+    .card & {
+      margin-bottom: 1.5em;
+    }
+  }
