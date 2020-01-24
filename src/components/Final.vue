@@ -60,6 +60,7 @@ export default {
     visibility: hidden;
     height: 0;
     overflow: hidden;
+
     transition: opacity .2s linear;
     &.visible {
       position: relative;
@@ -68,6 +69,7 @@ export default {
       height: auto;
       min-height: 70vh;
     }
+
     &__inner {
       padding: 60px 15px;
     }
@@ -85,7 +87,6 @@ export default {
       justify-content: center;
       align-items: flex-start;
       padding: 60px 0;
-
     }
       .final-btn {
         @include btn();

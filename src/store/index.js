@@ -52,7 +52,7 @@ export default new Vuex.Store({
       },
       actions: {
         loadPage: (state, data) => {
-          const _prefix = process.env.NODE_ENV === 'production' ? '/content/dist/sample' : '/sample';
+          const _prefix = '/sample';
           const _path = '/page-' + data.page + '.json';
           let pageData = {};
 
@@ -102,11 +102,11 @@ export default new Vuex.Store({
       },
       actions: {
         loadQuiz: (context) => {
-          const _prefix = process.env.NODE_ENV === 'production' ? '/content/dist/sample' : '/sample';
+          const _prefix = '/sample';
           const _path = '/quiz.json';
 
           Vue.superagent.get(_prefix + _path).then((response) => {
-            const _response = response.body;
+            const _response = response.body || {};
 
             if (_response.questions && _response.results) {
               context.commit('SET_QUESTIONS', _response.questions);
@@ -190,7 +190,7 @@ export default new Vuex.Store({
           context.commit('SET_SOURCE', data);
         },
         loadCard: (context, data) => {
-          const _prefix = process.env.NODE_ENV === 'production' ? '/content/dist/sample' : '/sample';
+          const _prefix = '/sample';
           const _path = '/card-' + data.guid + '.json';
 
           Vue.superagent.get(_prefix + _path).then((response) => {
@@ -255,7 +255,7 @@ export default new Vuex.Store({
       actions: {
         loadGifts: (context) => {
           const _path = '/gifts.json';
-          const _prefix = process.env.NODE_ENV === 'production' ? '/content/dist/sample' : '/sample';
+          const _prefix = '/sample';
 
           Vue.superagent.get(_prefix + _path).then((response) => {
             if (response.body) {

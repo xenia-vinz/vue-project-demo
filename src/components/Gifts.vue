@@ -81,17 +81,8 @@ export default {
     },
     cardGuid: {
       get() {
-        const
-          _data = this.$store.getters['card/getData'];
-        let
-          _guid = false;
-
-        if (_data) {
-          if (_data.guid) {
-            _guid = _data.guid;
-          }
-        }
-        return _guid;
+        const _data = this.$store.getters['card/getData'];
+        return (_data && _data.guid) ? _data.guid : false;
       },
     },
   },
@@ -168,6 +159,7 @@ export default {
     visibility: hidden;
     height: 0;
     overflow: hidden;
+
     transition: opacity .2s linear;
     &.visible {
       position: relative;
@@ -175,6 +167,7 @@ export default {
       visibility: visible;
       height: auto;
     }
+
     &__inner {
       padding: 80px 15px 0;
       transition: all .5s linear;
@@ -184,14 +177,12 @@ export default {
       position: absolute;
       top: 20px;
       left: 0;
-
       margin: 0 0 26px 11px;
       color: $c_steel;
       font-family: $font_lifehack;
       font-size: 20px;
       line-height: 125%;
       cursor: pointer;
-
       &:before {
         content: '';
         display: inline-block;
@@ -219,16 +210,17 @@ export default {
       & * {
         transition: all .2s ease;
       }
-
     }
       .gifts-list-item {
         cursor: pointer;
+
         @include breakpoint($tablet) {
           flex-basis: 30%;
         }
         @include breakpoint($desktop) {
           flex-basis: 30%;
         }
+
         &__content {
           opacity: 0;
           .gifts-list-item:hover & {
@@ -240,6 +232,7 @@ export default {
             font-weight: bold;
             font-size: 14px;
             line-height: 19px;
+
             @include breakpoint($desktop) {
               color: $c_red;
               font-weight: bold;

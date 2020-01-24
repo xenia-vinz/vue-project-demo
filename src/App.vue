@@ -136,6 +136,11 @@ export default {
 <style lang="scss">
   @import '@/scss/_utils.scss';
   @import '@/scss/_base.scss';
+  .wrapper {
+    min-height: 100vh;
+    display: grid;
+  grid-template-rows: 1fr auto;
+  }
   .main {
     position: relative;
 

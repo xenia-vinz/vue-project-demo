@@ -107,6 +107,7 @@ export default {
       .active + & {
         opacity: 0.5;
       }
+
       &__background {
         width: 100%;
         height: 100%;

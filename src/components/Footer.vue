@@ -72,8 +72,9 @@ export default {
 
 <style scoped lang="scss">
   @import '@/scss/_utils.scss';
-
   .footer {
+    grid-row-start: 2;
+    grid-row-end: 3;
     padding: 35px 0 30px;
     background: $c_sand;
 
@@ -88,6 +89,7 @@ export default {
     @include breakpoint($large) {
       padding: 30px 0;
     }
+
     &__inner {
       position: relative;
       margin: 0 20px;
@@ -121,6 +123,7 @@ export default {
     .footer-contacts-phone {
       margin: 0 0 23px;
       line-height: 20px;
+
       @include breakpoint($tablet) {
         margin: 0;
         grid-row: 1 / 1;
@@ -135,6 +138,7 @@ export default {
     .footer-contacts-email {
       margin: 0 0 22px;
       line-height: 20px;
+
       @include breakpoint($tablet) {
         grid-row: 1 / 1;
         grid-column: 2 / 2;
@@ -149,6 +153,7 @@ export default {
       @include breakpoint($large) {
         padding: 3px 0 0 0;
       }
+
       &__link {
         display: flex;
         justify-content: flex-start;
@@ -173,6 +178,7 @@ export default {
     .footer-contacts-url {
       margin: 0 0 20px;
       line-height: 20px;
+
       @include breakpoint($tablet) {
         grid-row: 1 / 1;
         grid-column: 3 / 3;
@@ -191,6 +197,7 @@ export default {
     }
     .footer-contacts-social {
       margin: 0 0 27px;
+
       @include breakpoint($tablet) {
         grid-row: 2 / 2;
         grid-column: 3 / 4;
@@ -210,6 +217,7 @@ export default {
       &__title {
         margin: 0 0 10px;
         line-height: 20px;
+
         @include breakpoint($tablet) {
           margin: 0 0 6px;
         }
@@ -250,6 +258,7 @@ export default {
     .footer-contacts-address {
       color: $c_sand_dark;
       line-height: 20px;
+
       @include breakpoint($tablet) {
         grid-row: 2 / 2;
         grid-column: 1 / 3;
@@ -267,6 +276,7 @@ export default {
       &__part {
         &--first {
           display: block;
+
           @include breakpoint($tablet) {
             display: inline;
           }
@@ -276,6 +286,7 @@ export default {
         }
         &--third {
           display: inline;
+
           @include breakpoint($tablet) {
             display: block;
           }

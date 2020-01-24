@@ -56,7 +56,6 @@ export default {
   },
   computed: {
     currentMode: {
-
       get() {
         return this.$store.getters.getCurrentMode;
       },
@@ -69,6 +68,7 @@ export default {
   @import '@/scss/_utils.scss';
   .partners {
     height: 218px;
+
     @include breakpoint($tablet) {
       height: 472px;
     }

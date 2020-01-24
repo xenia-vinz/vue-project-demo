@@ -90,12 +90,7 @@ export default {
       },
     },
     currentClass() {
-      let
-        _class = '';
-
-      if (this.$_.has(this.question, 'group')) {
-        _class = 'quiz--' + this.question.group;
-      }
+      const _class = this.$_.has(this.question, 'group') ? 'quiz--' + this.question.group : '';
       return _class;
     },
     question: {
@@ -105,9 +100,7 @@ export default {
     },
     savedAnswer: {
       get() {
-        const _currentSlug = this.question.slug;
-
-        return this.$store.getters['quiz/getAnswer'](_currentSlug);
+        return this.$store.getters['quiz/getAnswer'](this.question.slug);
       },
     },
   },
@@ -120,12 +113,10 @@ export default {
       this.answer = this.savedAnswer;
     },
     goToNext() {
-      const _answer = this.answer;
-      const _slug = this.question.slug;
       window.scrollTo(0, 0);
       this.$store.dispatch('quiz/next', {
-        slug: _slug,
-        answer: _answer,
+        slug: this.answer,
+        answer: this.question.slug,
       });
       this.answer = this.savedAnswer;
     },
@@ -135,18 +126,14 @@ export default {
 
 <style scoped lang="scss">
   @import '@/scss/_utils.scss';
-
   .quiz {
     position: absolute;
     top: 0;
-
     margin: 0 15px;
     padding: 70px 0 117px;
-
     opacity: 0;
     visibility: hidden;
     height: 0;
-    overflow: hidden;
     transition: opacity .2s linear;
     &.visible {
       position: relative;
@@ -154,6 +141,7 @@ export default {
       visibility: visible;
       height: auto;
     }
+
     @include breakpoint($tablet) {
       margin: 0 39px;
       padding: 104px 0 154px;
@@ -167,14 +155,12 @@ export default {
       position: absolute;
       top: 20px;
       left: 0;
-
       margin: 0 0 26px 11px;
       color: $c_steel;
       font-family: $font_lifehack;
       font-size: 20px;
       line-height: 125%;
       cursor: pointer;
-
       &:before {
         content: '';
         display: inline-block;
@@ -204,6 +190,7 @@ export default {
     .quiz-question {
       position: relative;
       padding: 22px;
+
       &__background {
         position: absolute;
         top: 0;
@@ -216,6 +203,7 @@ export default {
       &__inner {
         position: relative;
         padding: 18px;
+
         @include breakpoint($tablet) {
           padding: 0 80px;
         }
@@ -225,23 +213,19 @@ export default {
         position: relative;
         margin: 0 0 28px;
         padding: 60px 0 0;
-
         color: $c_sand_dark;
         text-align: center;
-
         font-size: 14px;
         line-height: 20px;
 
         @include breakpoint($tablet) {
           padding: 67px 0 0;
           margin: 0 0 45px;
-
           font-size: 18px;
           line-height: 23px;
         }
         @include breakpoint($desktop) {
           padding: 65px 0 0;
-
           font-size: 16px;
           line-height: 144%;
         }
@@ -249,11 +233,9 @@ export default {
       .quiz-question-title {
         position: relative;
         margin: 0 0 17px;
-
         font-family: $font_lifehack;
         color: $c_red;
         text-align: center;
-
         font-size: 20px;
         line-height: 25px;
 
@@ -277,6 +259,7 @@ export default {
             padding: 0 0 15px;
             font-size: 14px;
             line-height: 20px;
+
             @include breakpoint($tablet) {
               font-size: 18px;
               line-height: 24px;

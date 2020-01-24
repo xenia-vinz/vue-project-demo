@@ -37,7 +37,6 @@ export default {
   },
   computed: {
     currentMode: {
-
       get() {
         return this.$store.getters.getCurrentMode;
       },
@@ -80,8 +79,10 @@ export default {
       visibility: visible;
       height: auto;
     }
+
     &__inner {
       padding: 0 15px;
+
       @include breakpoint($tablet) {
         padding: 0;
       }
@@ -107,6 +108,7 @@ export default {
     &__actions {
       padding: 16px 0 53px;
       text-align: center;
+
       @include breakpoint($tablet) {
         padding: 37px 0 155px;
       }
@@ -134,6 +136,7 @@ export default {
       min-width: 290px;
       max-width: 100%;
       padding: 17px 0;
+
       @include breakpoint($tablet) {
         min-width: 320px;
         padding: 16px 0;

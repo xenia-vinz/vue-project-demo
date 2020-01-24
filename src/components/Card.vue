@@ -222,13 +222,7 @@ export default {
     guid: {
       get() {
         const _data = this.$store.getters['card/getData'];
-        let _guid = false;
-
-        if (_data.guid) {
-          _guid = _data.guid;
-        }
-
-        return _guid;
+        return (_data && _data.guid) ? _data.guid : false;
       },
     },
   },
@@ -383,9 +377,7 @@ export default {
   @import '@/scss/_utils.scss';
   .card {
     position: absolute;
-
     padding: 70px 0 60px;
-
     height: 0;
     opacity: 0;
     visibility: hidden;
@@ -398,27 +390,26 @@ export default {
       opacity: 1;
       visibility: visible;
     }
-    &__inner {
-      padding: 0 15px;
-      max-width: 900px;
-    }
     @include breakpoint($tablet) {
     }
     @include breakpoint($desktop) {
+    }
+
+    &__inner {
+      padding: 0 15px;
+      max-width: 900px;
     }
   }
     .card-goback {
       position: absolute;
       top: 20px;
       left: 0;
-
       margin: 0 0 26px 11px;
       color: $c_steel;
       font-family: $font_lifehack;
       font-size: 20px;
       line-height: 125%;
       cursor: pointer;
-
       &:before {
         content: '';
         display: inline-block;
@@ -444,13 +435,12 @@ export default {
         .card-top-title {
           position: relative;
           margin: 0 0 17px;
-
           font-family: $font_lifehack;
           color: $c_red;
           text-align: left;
-
           font-size: 30px;
           line-height: 30px;
+
           @include breakpoint($tablet) {
             margin: 0 0 9px;
             font-size: 60px;
@@ -460,6 +450,7 @@ export default {
         .card-top-intro {
           font-size: 13px;
           line-height: 20px;
+
           @include breakpoint($tablet) {
             font-size: 18px;
             line-height: 26px;
@@ -468,6 +459,7 @@ export default {
         .card-top-text {
           font-size: 13px;
           line-height: 20px;
+
           @include breakpoint($tablet) {
             margin: 0 382px 0 0;
             min-height: 374px;
@@ -518,6 +510,7 @@ export default {
         }
         &__background {
           display: none;
+
           @include breakpoint($tablet) {
             display: block;
             position: absolute;
@@ -539,6 +532,7 @@ export default {
           @include bg();
           background-image: url('../assets/santa.png');
           z-index: 110;
+
           @include breakpoint($tablet) {
             position: absolute;
             left: auto;
@@ -556,13 +550,12 @@ export default {
         .card-content-title {
           position: relative;
           margin: 0 0 13px;
-
           font-family: $font_lifehack;
           color: $c_red;
           text-align: center;
-
           font-size: 20px;
           line-height: 25px;
+
           @include breakpoint($tablet) {
             font-size: 30px;
             line-height: 30px;
@@ -575,9 +568,7 @@ export default {
               position: relative;
               margin: 0 0 1.35em;
               padding: 0 0 0 22px;
-
               list-style: none outside none;
-
               font-size: 13px;
               line-height: 20px;
               &:before {
@@ -605,6 +596,7 @@ export default {
           padding: 1px 0 0 20px;
           font-size: 13px;
           line-height: 20px;
+
           @include breakpoint($tablet) {
             font-size: 18px;
             line-height: 26px;
@@ -612,6 +604,7 @@ export default {
         }
         .card-content-actions {
           position: relative;
+
           @include breakpoint($tablet) {
             display:flex;
             justify-content: center;
@@ -628,6 +621,10 @@ export default {
             padding: 17px;
             transition: all .3s ease;
             background: $c_white;
+            &:hover {
+              background: $c_red;
+            }
+
             @include breakpoint($tablet) {
               width: auto;
               margin: 0 20px 10px;
@@ -639,9 +636,11 @@ export default {
               width: 26px;
               height: 26px;
               margin: 0 6px 0 0;
+              border-radius: 100px;
               @include bg();
-
-              border-radius:100px;
+              .card-content-button:hover & {
+                background-color: $c_white;
+              }
               &--gift {
                 background-image: url('../assets/ico-gift.svg');
               }
@@ -650,6 +649,7 @@ export default {
                 height: 20px;
                 background-image: url('../assets/ico-card.svg');
               }
+
               @include breakpoint($tablet) {
                 margin: 0 10px 0 0;
                 width: 28px;
@@ -668,70 +668,67 @@ export default {
               font-size: 16px;
               line-height: 25px;
               color: $c_red;
+              .card-content-button:hover & {
+                color: $c_sand;
+              }
+
               @include breakpoint($tablet) {
                 font-size: 20px;
                 line-height: 25px;
               }
             }
-            &:hover {
-                background: $c_red;
-                .card-content-button__ico {
-                    background-color:#fff;
-                }
-                .card-content-button__label {
-                    color: $c_sand;
-                }
-            }
           }
-  .card-confirm-popup {
+    // confirmation popup
+      .card-confirm-popup {
         position: relative;
         padding: 22px;
+
+        &__background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+        }
         &__inner {
-            @include breakpoint($tablet) {
-                padding:20px 30px;
-            }
+          @include breakpoint($tablet) {
+            padding: 20px 30px;
+          }
         }
-        .card-confirm-popup-form-input{
-            width:100%;
+      }
+        .card-confirm-popup-title {
+          position: relative;
+          margin: 0 0 17px;
+          font-family: $font_lifehack;
+          color: $c_red;
+          text-align: center;
+          font-size: 20px;
+          line-height: 25px;
+
+          @include breakpoint($tablet) {
+            font-size: 30px;
+            line-height: 30px;
+          }
+          @include breakpoint($desktop) {
+            margin: 0 0 20px;
+          }
         }
-             &__background {
-               position: absolute;
-               top: 0;
-               left: 0;
-               right: 0;
-               bottom: 0;
-               width: 100%;
-               height: 100%;
-             }
-        .card-confirm-popup-form__row{
-            margin-bottom:10px;
-            &--submit{
-                display: flex;
-                justify-content: center;
+        .card-confirm-popup-form {
+          &__row {
+            margin: 0 0 10px;
+            &--submit {
+              display: flex;
+              justify-content: center;
+              align-items: flex-start;
             }
+          }
+        }
+        .card-confirm-popup-form-input {
+          width: 100%;
         }
         .card-confirm-popup-form-btn {
           @include btn();
         }
-        .card-confirm-popup-title{
-            position: relative;
-            margin: 0 0 17px;
-
-            font-family: $font_lifehack;
-            color: $c_red;
-            text-align: center;
-
-            font-size: 20px;
-            line-height: 25px;
-
-            @include breakpoint($tablet) {
-              font-size: 30px;
-              line-height: 30px;
-            }
-            @include breakpoint($desktop) {
-              margin: 0 0 20px;
-            }
-        }
-
-  }
 </style>
